@@ -1,0 +1,135 @@
+/* -----------------  Estilos generales  ----------------- */
+body {
+  padding-top: 30px;
+}
+
+.btnSearch{
+    cursor: pointer;
+}
+
+.btnSearch:hover,
+.btnSearch:focus{
+	background-color: #d6d6d6;	
+}
+
+#btnGuardar{
+	margin-left: 10px;
+}
+
+.redPoint{
+	color: #480000;
+}
+
+.bg-danger, .bg-danger2 {
+	display: none;
+	padding: 10px 15px;
+	color: #414141;
+	background-color: #f2dede;
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+.bg-info {
+	display: none;
+	padding: 10px 15px;
+	color: #414141;
+	background-color: #d9edf7;
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+.fade.in {
+	opacity: .9;
+}
+
+.btnPagina{
+	cursor: pointer;
+}
+
+.editRow{
+	cursor: pointer;
+	font-weight: bold;;
+}
+
+
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.owl-controls{
+	display: none !important;
+}
+
+
+
+.droparea {
+	padding: 15px 70px;
+	display: block;
+	border: 2px dashed #ddd;
+	opacity: .8;
+	width: 300px;
+	height: 200px;
+	margin-left: 30px;
+	cursor: pointer;
+}
+
+.typeP{
+	padding: 0;
+	width: 200px !important;
+	height: 100px !important;
+}
+.typeC{
+	padding: 0;
+	width: 300px !important;
+	height: 120px !important;
+}
+.typeB{
+	padding: 0;
+	margin-left: 0;
+	margin-bottom: 30px;
+	width: 900px !important;
+	height: 120px !important;
+}
+.typeCom{
+	padding: 0;
+	margin-left: 0;
+	margin-bottom: 30px;
+	width: 600px !important;
+	height: 240px !important;
+}
+
+#imageInput{
+	width: 0px;
+	height: 0px;
+	visibility: hidden;
+}
+
+#txtComercio.twitter-typeahead{
+	width:436px !important;
+	padding-right: 30px;
+}
+
+.typeahead-check{
+	background: url('../img/app/check.png')  no-repeat right center;
+}
+
+.logoLogin{
+	width: 150px;
+	height: 125px;
+	background: url('../img/app/logo-min.png')  no-repeat right center;
+}
+
+.navbar-brand{
+	padding-left: 70px;
+	background: url('../img/app/logo-Xmin.png')  no-repeat left center;
+}
+
+.logout{
+	float: right;
+}
+
+fieldset {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}

@@ -1,0 +1,85 @@
+
+* { padding: 0; margin: 0; }
+
+html, body { height: 100%; width: 100%; }
+
+#container{
+    width: 100%;
+    min-height: 100%;
+    padding-bottom: 100px;
+    margin-bottom: -60px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #f0f1f2;
+}
+
+#head-2{
+    height: 60px;
+    padding: 5px 10px;
+    margin-right: 15px;
+    background: url('../img/app/backMenu.jpg');
+}
+     
+#topLine{
+    height: 2px;
+    background: #000;
+    margin-bottom: 30px;
+}
+
+
+#footer{
+    width: 100%;
+    height: 60px;
+    position: relative;
+    z-index: 1;
+	color: #FFF;
+	text-align: center;
+	background: #191718;
+	font-family: 'Alegreya Sans', sans-serif;
+	
+}
+
+#foot-border{
+    height: 10px;
+    background: #3f3f3f;
+}
+
+.info{
+    background-color: #ffffff;
+}
+#secRight{
+    height: 560px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+}
+
+.columnSp{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#map_canvas {
+    width: 350px;
+    height:300px;
+    margin: 20px 0;
+}
+
+.share-square {
+    margin: 0 10px 10px 0;
+}
+
+.contactInfo{
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 7px;
+}
+
+.title{
+    margin-top: 20px;
+}
+
+
+
+
+

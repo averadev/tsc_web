@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15/09/2014, 05:28:37 PM
+    Author     : Guest
+*/
+
+#btnGuardar, #btnGuardar2{
+    background-color: #e6782f;
+}
+
+h2{
+    top: 60px;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type=email]{
+    background: #fff url('../../assets/img/icons/iconMail.png')  no-repeat right center;
+}
+
+input[type=password]{
+    background: #fff url('../../assets/img/icons/iconPass.png')  no-repeat right center;
+}
+     
+#topLine{
+    height: 2px;
+    background: #000;
+    margin-bottom: 30px;
+}
+
+* { padding: 0; margin: 0; }
+
+html, body { height: 100%; width: 100%; }
+
+#container{
+    width: 100%;
+    min-height: 100%;
+    padding-bottom: 40px;
+    margin-bottom: -60px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#footer{
+    width: 100%;
+    height: 60px;
+    position: relative;
+    z-index: 1;
+	color: #FFF;
+	text-align: center;
+	background: #191718;
+	font-family: 'Alegreya Sans', sans-serif;
+	
+}
+
+#foot-border{
+    height: 10px;
+    background: #3f3f3f;
+}
