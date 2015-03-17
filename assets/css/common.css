@@ -133,3 +133,11 @@ fieldset {
     -moz-border-radius: 8px;
     border-radius: 8px;
 }
+
+/* -----------------  Bootbox Prompt  ----------------- */
+.modal-body{
+    display: none;    
+}
+.modal-header{
+    border-bottom: none !important;
+}

@@ -3,7 +3,6 @@
   <head>
     <title>The saving coupon</title>
     <link rel="stylesheet" href="<?php echo base_url().CSS; ?>foundation.css" />
-    <link rel="stylesheet" href="<?php echo base_url().CSS; ?>jquery.share.css" />
     <link rel="stylesheet" href="<?php echo base_url().CSS; ?>main.css" />
     <script src="<?php echo base_url().JS; ?>vendor/modernizr.js"></script>
   </head>
@@ -27,9 +26,9 @@
           <div id="headLogo"></div>
           <div id="headRight">
             <div id="subMenu">
-              <span>WHAT IS TSC</span>
-              <span>GET YOUR COUPON BOOK</span>
-              <span>AD WITH US</span>
+              <span id="menu1">WHAT IS TSC</span>
+              <span id="menu2">GET YOUR COUPON BOOK</span>
+              <span id="menu3">AD WITH US</span>
             </div>
 
             <div>
@@ -126,7 +125,7 @@
           <div class="tmpButtons">
             <a class="button btnLCoupon btnLCouponL BTN_RGB2" onclick="setLike(this, ID_COUPON, OLD_LIKES);">NO_LIKES LIKES</a>
             VER_MAS
-            <div class="tmpSocial"></div>
+            <div class="tmpSocial">SOCIAL_BTN</div>
           </div>
         </div>
         <div class="tmpCupon" style="background: url('assets/img/coupon/IMAGEN_URL') no-repeat;"></div>
@@ -150,14 +149,20 @@
     <input type="hidden" id="baseUrl" value="<?php echo base_url(); ?>" />
 
     <!-- ................. FOOTER ................. --> 
+	<div id="foot-info">
+		<div class="row">
+			<div class="medium-5 columns"><center><a><img src="<?php echo base_url().IMG; ?>app/socialFB.png" /></a></center></div>
+			<div class="medium-2 columns"><center><a><img src="<?php echo base_url().IMG; ?>app/socialTW.png" /></a></center></div>
+			<div class="medium-5 columns"><center><a><img src="<?php echo base_url().IMG; ?>app/logoFoot.png" /></a></center></div>
+		</div>
+	</div>
     <div id="footer">
-      <div id="foot-border"></div>
+      	@ Copyrigth 2014
     </div>
     
     <script src="<?php echo base_url().JS; ?>vendor/jquery.js"></script>
     <script src="<?php echo base_url().JS; ?>foundation.min.js"></script>
     <script src="<?php echo base_url().JS; ?>foundation/foundation.orbit.js"></script>
-    <script src="<?php echo base_url().JS; ?>jquery.share.js"></script>
     <script src="<?php echo base_url().JS; ?>api/main.js"></script>
     <script>
       $(document).foundation({orbit: {timer: true, bullets: false, timer_speed: 5000}});

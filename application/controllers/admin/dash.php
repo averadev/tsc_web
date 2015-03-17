@@ -36,7 +36,10 @@ class Dash extends CI_Controller {
     }
 
     public function index() {
-        $arr['page']='dash';
+		$id = $this->session->userdata('id');
+		$arr['totales'] = $this->cliente_cupon_db->totales($id)[0];
+		$arr['cupones'] = $this->cliente_cupon_db->cupones($id);
+		$arr['page'] = 'dash';
         $this->load->view('admin/vwDash',$arr);
     }
 

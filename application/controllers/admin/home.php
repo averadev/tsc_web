@@ -32,7 +32,11 @@ class Home extends CI_Controller {
 
     public function index() {
          if ($this->session->userdata('is_admin_login')) {
-            redirect('admin/dashboard');
+			 if ($this->session->userdata('user_type') == 'SA') {
+				 redirect('admin/comercios');
+			 }else{
+				 redirect('admin/dash');
+			 }
         } else {
         $this->load->view('admin/vwLogin');
         }
@@ -67,7 +71,7 @@ class Home extends CI_Controller {
                                 )
                         );
                     }
-                    redirect('admin/dashboard');
+                    redirect('admin/comercios');
                 } else {
                     $enc_pass  = md5($password);
                     $sql = "SELECT * FROM comercio WHERE usuario = ? AND password = ?";
@@ -79,7 +83,7 @@ class Home extends CI_Controller {
                                 'id' => $res['id'],
                                 'username' => $res['usuario'],                       
                                 'is_admin_login' => true,
-                                'user_type' => 'SA'
+                                'user_type' => 'CO'
                                     )
                             );
                         }

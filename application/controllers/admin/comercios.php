@@ -114,6 +114,47 @@ class Comercios extends CI_Controller {
             echo json_encode(array());
         }
     }
+    
+    public function sendPass(){
+        
+        $email = $_POST['usuario'];
+        $password = $_POST['password'];
+    	
+        // mensaje
+        $mensaje = '
+        <html>
+            <body>
+                <div style="width:100%; height:5px; background: #f79c43;"></div>
+                <div style="width:100%; height:20px; background: #000; font-size:20px; color:#ffffff; padding: 10px 0 10px 50px; ">
+                    Informacion de acceso, The Saving Coupon
+                </div>
+
+                <br/><br/>
+                <div style="width:100%; margin: 20px 0;">
+                    <h3>Hola!, los datos de acceso a nuestro portal son los siguientes:</h3>
+                    
+                    <p style="font-family:Georgia; font-size:18px;">Link: <a href="http://thesavingcoupon.com/admin">thesavingcoupon.com/admin</a></p>
+                    <p style="font-family:Georgia; font-size:18px;">Correo: '.$email.'</p>
+                    <p style="font-family:Georgia; font-size:18px;">Password: '.$password.'</p>
+
+                </div>
+                <br/><br/><br/><br/>
+
+                <div style="width:100%; height:30px; background: #000; font-size:18px; font-weight: bold; color:#ffffff;"></div>
+                <div style="width:100%; height:5px; background: #f79c43;"></div>
+
+            </body>
+        </html>
+        ';
+
+        // Para enviar un correo HTML, debe establecerse la cabecera Content-type
+        $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+        $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $cabeceras .= 'From: Contacto <contacto@thesavingcoupon.com>';
+
+        // Enviarlo
+        mail($email, "Registro The Saving Coupon", $mensaje, $cabeceras);
+    }
 
 
 }

@@ -45,6 +45,9 @@ function save() {
             data: {
                 correo: $("#correo").val(),
                 password: $("#password").val(),
+				nombre: ($("#txtname").val()=='')?'-':$("#txtname").val(),
+				pais: ($("#txtcountry").val()=='')?'-':$("#txtcountry").val(),
+				estancia: ($("#txtstay").val()=='')?'-':$("#txtstay").val(),
                 status: 0,
                 idTipoCupon : tipo_cupon
             },
@@ -66,43 +69,55 @@ function save() {
 function validateForm2() {
     if ($("#correo2").val() === '' || $("#password2").val() === '') {
         $("#error2").hide();
-        $("#error2").text('Todos los campos son requeridos');
+        $("#error2").text('All fields are required');
         $("#error2").show("slow");
         return false;
     }
     if (!validateEmail($("#correo2").val())) {
         $("#error2").hide();
-        $("#error2").text("Correo no valido");
+        $("#error2").text("Email format not valid");
         $("#error2").show("slow");
         return false;
     }
+	if (!$("#chkTerms2").is(':checked')){
+		$("#error2").hide();
+        $("#error2").text("You need to accept the terms of use");
+        $("#error2").show("slow");
+        return false;
+	}
     return true;
 }
 function validateForm() {
     if ($("#correo").val() === '' || $("#password").val() === '') {
         $("#error").hide();
-        $("#error").text('Todos los campos son requeridos');
+        $("#error").text('Email and Password are required');
         $("#error").show("slow");
         return false;
     }
     if (!validateEmail($("#correo").val())) {
         $("#error").hide();
-        $("#error").text("Correo no valido");
+        $("#error").text("Email format not valid");
         $("#error").show("slow");
         return false;
     }
     if ($("#correo").val() !== $("#correoConf").val()) {
         $("#error").hide();
-        $("#error").text("Los correos no coinciden");
+        $("#error").text("The emails do not match");
         $("#error").show("slow");
         return false;
     }
     if ($("#password").val() !== $("#passwordConf").val()) {
         $("#error").hide();
-        $("#error").text("Las contraseñas no coinciden");
+        $("#error").text("The password do not match");
         $("#error").show("slow");
         return false;
     }
+	if (!$("#chkTerms").is(':checked')){
+		$("#error").hide();
+        $("#error").text("You need to accept the terms of use");
+        $("#error").show("slow");
+        return false;
+	}
     return true;
 }
 function clearAll() {
@@ -113,6 +128,9 @@ function clearAll() {
     $("#password").val("");
     $("#correoConf").val("");
     $("#passwordConf").val("");
+    $("#txtname").val("");
+    $("#txtcountry").val("");
+    $("#txtstay").val("");
 }
 function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

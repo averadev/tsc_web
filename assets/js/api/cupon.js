@@ -25,10 +25,8 @@ $(function() {
 	});
 
 	$(".btnType").click(function() {
-		if($(this).hasClass("btn-info"))
-			$(this).removeClass("btn-info");
-		else
-			$(this).addClass("btn-info");
+		$(".btnType").removeClass("btn-info");
+		$(this).addClass("btn-info");
 	});
 
 

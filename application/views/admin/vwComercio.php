@@ -107,6 +107,32 @@ $this->load->view('admin/vwHeader');
             </td>
           </tr>
         </table>
+          
+        <hr/>
+        <table>
+          <tr>
+            <td width="300">
+              <div class="form-group">
+                <label for="txtFacebook">Facebook</label>
+                <input type="text" class="form-control" id="txtFacebook" style="width: 250px;">
+              </div>
+            </td>
+            <td width="300">
+              <div class="form-group">
+                <label for="txtTwitter">Twitter</label>
+                <input type="text" class="form-control" id="txtTwitter" style="width: 250px;">
+              </div>
+            </td>
+            <td width="300">
+              <div class="form-group">
+                <label for="txtTripAdvisor">TripAdvisor</label>
+                <input type="text" class="form-control" id="txtTripAdvisor" style="width: 250px;">
+              </div>
+            </td>
+          </tr>
+        </table>
+          
+        
         
         <hr/>
         <div class="form-group">
@@ -179,6 +205,7 @@ $this->load->view('admin/vwHeader');
 $this->load->view('admin/vwFooter');
 ?>
 
+<script src="<?php echo base_url().JS; ?>api/bootbox.js"></script>
 <script src="<?php echo base_url().JS; ?>jquery.form.js"></script>
 <script src="<?php echo base_url().JS; ?>typeahead.jquery.js"></script>
 <script src="<?php echo base_url().JS; ?>api/comercios.js"></script>

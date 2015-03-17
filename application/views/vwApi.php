@@ -3,7 +3,7 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Go Deals</title>
+        <title>TSC</title>
     </head>
     <body>
     </body>

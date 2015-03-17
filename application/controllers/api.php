@@ -28,6 +28,26 @@ class Api extends REST_Controller {
     /**
      * Test connection
      */
+    public function verifyuser_get() { 
+		$pass = md5($this->get('pass'));
+        $data = $this->api_db->verifyEmailPass($this->get('user'), $pass);
+		if (count($data) > 0){
+			$data2 = $this->api_db->verifyPay($data[0]->id);
+			if (count($data2) > 0){
+				$message = array('success' => true, 'message' => 'Correct Access', 
+								 'idCliente' => $data2[0]->idCliente, 'idTipoCupon' => $data2[0]->idTipoCupon);
+			}else{
+				$message = array('success' => false, 'message' => 'Pay Pending Membership.');
+			}
+		}else{
+			$message = array('success' => false, 'message' => 'Incorrect email or password.');
+		}
+		$this->response($message);
+    }
+
+    /**
+     * Test connection
+     */
     public function data_get() { 
         $idCliente = $this->get('id');
         $usuario = $this->api_db->getUserType($idCliente);
@@ -78,7 +98,7 @@ class Api extends REST_Controller {
      * Genera codigo aleatorio
      */
     function getRandomCode(){
-        $an = "ABCDEFGHIJKLMNPQRSTUVWXYZ";
+        $an = "ABCDEFGHJKLMNPQRSTUVWXYZ";
         $su = strlen($an) - 1;
         return substr($an, rand(0, $su), 1) .
                 substr($an, rand(0, $su), 1) .

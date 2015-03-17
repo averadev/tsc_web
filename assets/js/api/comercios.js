@@ -1,3 +1,4 @@
+
 var SLIDER = null;
 
 $(function() {
@@ -148,6 +149,9 @@ function clearData(){
 	$("#txtEmail").val('');
 	$("#txtLatitud").val('');
 	$("#txtLongitud").val('');
+	$("#txtFacebook").val('');
+	$("#txtTwitter").val('');
+	$("#txtTripAdvisor").val('');
 	$("#hideURL").val('');
     $("#chkMicrositio").prop("checked", false);
 	$('.droparea').css('background', "");
@@ -201,6 +205,9 @@ function consultar(idRow){
 			$("#txtEmail").val(data.comercio[0].correo);
 			$("#txtLatitud").val(data.comercio[0].latitud);
 			$("#txtLongitud").val(data.comercio[0].longitud);
+			$("#txtFacebook").val(data.comercio[0].facebook);
+			$("#txtTwitter").val(data.comercio[0].twitter);
+			$("#txtTripAdvisor").val(data.comercio[0].tripadvisor);
             
             // Micrositio
             if (data.comercio[0].site == 0 || data.comercio[0].site == '0'){
@@ -270,16 +277,46 @@ function save(){
                 correo: $("#txtEmail").val(),
                 latitud: $("#txtLatitud").val(),
                 longitud: $("#txtLongitud").val(),
+				facebook: $("#txtFacebook").val(),
+				twitter: $("#txtTwitter").val(),
+				tripadvisor: $("#txtTripAdvisor").val(),
                 banner: $("#hideURL").val(),
 				industrias: getSelInd(),
 				status: 1
 			},
 			success: function(data){
-				clearData();
-				reloadSearch();
-				SLIDER.prev();
-				$(".bg-info").show("slow");
-				setTimeout(function() { $(".bg-info").hide("slow"); }, 3000);
+                if ($("#txtUsuario").val() != "" && $("#txtPass").val() != ""){
+                    bootbox.prompt({
+                        title: "¿Desea enviarle un correo al cliente con su nuevo password?",
+                        callback: function(result) {
+                            if (result === null) {
+                            } else {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "comercios/sendPass",
+                                    dataType:'json',
+                                    data: { 
+                                        usuario: $("#txtUsuario").val(),
+                                        password: $("#txtPass").val()
+                                    },
+                                    success: function(data){
+                                    }
+                                });
+                            }
+                            clearData();
+                            reloadSearch();
+                            SLIDER.prev();
+                            $(".bg-info").show("slow");
+                            setTimeout(function() { $(".bg-info").hide("slow"); }, 3000);
+                        }
+                    });
+                }else{
+                    clearData();
+                    reloadSearch();
+                    SLIDER.prev();
+                    $(".bg-info").show("slow");
+                    setTimeout(function() { $(".bg-info").hide("slow"); }, 3000);
+                }
 			}
 		});
 	}

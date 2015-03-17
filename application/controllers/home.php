@@ -16,6 +16,11 @@ class home extends CI_Controller {
     }
 
     public function index(){
+		$pos = strrpos($_SERVER["REQUEST_URI"], "home");
+		if ($pos === false) {
+			redirect('prox');
+		}else
+		
         $arr['page'] = 'home';
         $arr['banner1'] = $this->sortSliceArray($this->banner_db->getByTipo(1), 4);
         $arr['banner2'] = $this->sortSliceArray($this->banner_db->getByTipo(2), 4);

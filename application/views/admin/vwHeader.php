@@ -38,7 +38,6 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li <?php echo  $pg =='dash' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/dashboard">Dashboard</a></li>
             <li <?php echo  $pg =='comercio' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/comercios">Comercios</a></li>
             <li <?php echo  $pg =='cupon' ? 'class="active"' : '' ?>><a href="<?php echo base_url(); ?>admin/cupones">Cupones</a></li>
             <li class="dropdown">

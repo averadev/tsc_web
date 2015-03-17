@@ -1,5 +1,5 @@
      <footer>
-        <p>&copy; Geekbucket 2014</p>
+        <p>&copy; @ Copyrigth 2014</p>
       </footer>
   
     <!-- Placed at the end of the document so the pages load faster -->

@@ -1,0 +1,54 @@
+body{
+	background:url('../img/app/proxbg.jpg') no-repeat;
+	background-size: 100%;
+}
+
+#comming{
+	color: #FFF;
+	width: 1000px;
+	height: 35px;
+	font-size: 24px;
+	font-family: 'Oxygen', sans-serif;
+}
+
+#logo{
+	background: url('../img/app/proxlogo.png') no-repeat;
+	width: 350px;
+	height: 400px;
+	margin-top: 280px;
+	margin-left: 200px;
+}
+
+#logo input{
+	padding: 5px 10px;
+	margin-top: 330px;
+	width: 258px;
+	height: 44px;
+	border-radius: 3px;
+	border:0;
+
+	-moz-box-shadow:    0px 2px 0px 0px #C3AF86;
+  	-webkit-box-shadow: 0px 2px 0px 0px #C3AF86;
+  	box-shadow:         0px 2px 0px 0px #C3AF86; 
+  	margin-left: 16px;
+}
+
+#contacto {
+	background: #F08821;
+	width: 43px;
+	height: 46px;
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+	margin-top: 330px;
+	border-radius: 4px;
+	color: #FFFFFF;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 300;
+	line-height: 46px;
+	position: absolute;
+}
+
+.redCls{
+	border: 1px solid red !important;
+}

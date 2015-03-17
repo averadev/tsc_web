@@ -36,6 +36,13 @@ input[type=password]{
 
 html, body { height: 100%; width: 100%; }
 
+.terms{
+	margin: 10px 0;
+	padding: 10px 0 0 10px;
+	background-color: #d3d3d3;
+	border: 2px solid #c7c7c7;
+}
+
 #container{
     width: 100%;
     min-height: 100%;

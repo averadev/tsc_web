@@ -32,6 +32,9 @@ Class cliente_db extends CI_MODEL
         $cliente = array(
             "correo" => $data["correo"],
             "password" => md5($data["password"]),
+			"nombre" => $data["nombre"],
+			"pais" => $data["pais"],
+			"estancia" => $data["estancia"],
             "status" => 1
         );
         $this->db->insert('cliente', $cliente);

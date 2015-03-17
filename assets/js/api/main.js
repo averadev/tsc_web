@@ -6,7 +6,8 @@ var PAGE_CURRENT = 0;
 var TIPO_CUPON = 1;
 var TIPO_INDUSTRIA = 0;
 var STR_CUPON = '';
-
+var toUp = true;
+var doMove = false;
 
 $(function() {
 	// Obtiene el menu de Industria
@@ -17,29 +18,22 @@ $(function() {
     
     // Logo
     $("#headLogo").click(function() {window.location.href = "./"});
+	
+	// Menu
+	$("#menu1").click(function() { window.location.href = "./about?m=1"; });
+	$("#menu2").click(function() { window.location.href = "./about?m=2"; });
+	$("#menu3").click(function() { window.location.href = "./about?m=3"; });
     
 	// Cargar Publicidad y botones de navegacion
 	loadPublish();
 	$("#btnUp").click(function() {
-		if(! $(this).hasClass("disabled")){
-			// Animate
-			$($("#publish-carrusel div")[PUBLISH_CURRENT - 1]).hide("slow");
-			$($("#publish-carrusel div")[PUBLISH_CURRENT]).show("slow");
-			// Set position
-			PUBLISH_CURRENT += 1;
-			updateBtnPublish();
-		} 
+        doMove = false;
+		doMovePublish(true);
 	  
 	});
 	$("#btnDown").click(function() {
-		if(! $(this).hasClass("disabled")){
-			// Animate
-			$($("#publish-carrusel div")[PUBLISH_CURRENT - 1]).hide("slow");
-			$($("#publish-carrusel div")[PUBLISH_CURRENT - 2]).show("slow");
-			// Set position
-			PUBLISH_CURRENT -= 1;
-			updateBtnPublish();
-		}
+        doMove = false;
+		doMovePublish(false);
 	});
     
     // Seleciona cuponera
@@ -98,6 +92,45 @@ function smoothScrolling(target){
 		}, 1000);
 		return false;
 	}
+}
+
+function movePublish(){
+    if(doMove){
+        if (toUp && !$("#btnUp").hasClass("disabled")) {
+            doMovePublish(true);
+        }else if (toUp && $("#btnUp").hasClass("disabled")) {
+            toUp = false;
+            doMovePublish(false);
+        }else if (!toUp && !$("#btnDown").hasClass("disabled")) {
+            doMovePublish(false);
+        }else{
+            toUp = true;
+            doMovePublish(true);
+        }
+        setTimeout(function(){ movePublish(); }, 5000);
+    }
+}
+
+function doMovePublish(isUp){
+    if(isUp){
+        if(! $("#btnUp").hasClass("disabled")){
+            // Animate
+            $($("#publish-carrusel div")[PUBLISH_CURRENT - 1]).hide("slow");
+            $($("#publish-carrusel div")[PUBLISH_CURRENT]).show("slow");
+            // Set position
+            PUBLISH_CURRENT += 1;
+            updateBtnPublish();
+        } 
+    }else{
+		if(! $("#btnDown").hasClass("disabled")){
+			// Animate
+			$($("#publish-carrusel div")[PUBLISH_CURRENT - 1]).hide("slow");
+			$($("#publish-carrusel div")[PUBLISH_CURRENT - 2]).show("slow");
+			// Set position
+			PUBLISH_CURRENT -= 1;
+			updateBtnPublish();
+		}
+    }
 }
 
 /**
@@ -225,6 +258,12 @@ function loadPublish(){
 				PUBLISH_MAX += 1;
 				htmlPublish += divEl + "</div>";
 			}
+            
+            // Do carrusel
+            if(data.length > 4){
+                doMove = true;
+                setTimeout(function(){ movePublish(); }, 5000);
+            }
 
 			// Iniciar botones de navegacion e ingresar patrocinados
 			updateBtnPublish();
@@ -272,7 +311,7 @@ function loadCoupons(){
                     tmpTemplate = tmpTemplate.replace('VER_MAS', '<a class="button btnLCoupon btnLCouponD BTN_RGB1" href="'+
                                                       $("#baseUrl").val()+'comercio?i='+data[i].id+'">VER MAS</a>');
                 }else{
-                    tmpTemplate = tmpTemplate.replace('VER_MAS', '<a class="button btnLCouponNo BTN_RGB1"></a>');
+                    tmpTemplate = tmpTemplate.replace('VER_MAS', '<a class="button btnLCouponNo BTN_RGB1">&nbsp;</a>');
                 }
 				tmpTemplate = tmpTemplate.replace('ID_COUPON', data[i].id);
 				tmpTemplate = tmpTemplate.replace('NO_LIKES', data[i].likes);
@@ -283,8 +322,23 @@ function loadCoupons(){
 				tmpTemplate = tmpTemplate.replace('DESC_MIDDLE', data[i].direccion);
 				tmpTemplate = tmpTemplate.replace('DESC_BOTTOM', data[i].servicios);
 				tmpTemplate = tmpTemplate.replace('IMAGEN_URL', data[i].url);
+				
+				var socialBtn = '';
+				if (data[i].facebook != ''){ 
+					socialBtn += '<a target="_blank" href="'+data[i].facebook+'"><img class="socialYes" src="assets/img/app/social1.png"></a>'  
+				}else { socialBtn += '<img class="socialNo" src="assets/img/app/social1.png">' } 
+				if (data[i].twitter != ''){ 
+					socialBtn += '<a target="_blank" href="'+data[i].twitter+'"><img class="socialYes" src="assets/img/app/social2.png"></a>'  
+				}else { socialBtn += '<img class="socialNo" src="assets/img/app/social2.png">' } 
+				if (data[i].tripadvisor != ''){ 
+					socialBtn += '<a target="_blank" href="'+data[i].tripadvisor+'"><img class="socialYes" src="assets/img/app/social3.png"></a>'  
+				}else { socialBtn += '<img class="socialNo" src="assets/img/app/social3.png">' } 
+				if (data[i].correo != ''){ 
+					socialBtn += '<a href="mailto:'+data[i].correo+'"><img class="socialYes" src="assets/img/app/social4.png"></a>'  
+				}else { socialBtn += '<img class="socialNo" src="assets/img/app/social4.png">' } 
+				
+				tmpTemplate = tmpTemplate.replace('SOCIAL_BTN', socialBtn);
                 
-
 				plantilla += tmpTemplate;
 			}
 
@@ -299,15 +353,7 @@ function loadCoupons(){
 
 			// Ingresamos cupones
 			$("#scrollCoupon").html(plantilla);
-			// Creamos botones sociales
-			$('.tmpSocial').share({
-		        networks: ['facebook','twitter','pinterest','email'],
-        		urlToShare: $("#baseUrl").val(),
-		        theme: 'square'
-		    });
-		    $( ".tmpSocial a" ).remove( ".currentPop" );
-		    $( ".tmpSocial a").addClass('currentPop');
-
+			
 		    // De ser necesario crea el paginador
 		    PAGE_CURRENT = 0;
 			if (data.length > 12){

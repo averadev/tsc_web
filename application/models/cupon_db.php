@@ -120,7 +120,7 @@ Class cupon_db extends CI_MODEL
 	 * Obtiene los cupones por tipo
 	 */
     public function getCuponesPorTipo($tipo){
-    	$this->db->select('cupon.id, cupon.url, cupon.descripcion, cupon.likes, comercio.id, comercio.site, comercio.nombre, comercio.direccion, comercio.servicios');
+    	$this->db->select('cupon.id, cupon.url, cupon.descripcion, cupon.likes, comercio.id as idComercio, comercio.site, comercio.nombre, comercio.direccion, comercio.servicios, comercio.facebook, comercio.twitter, comercio.tripadvisor, comercio.correo');
 		$this->db->from('cupon');
 		$this->db->join('comercio', 'cupon.idComercio = comercio.id');
                 $this->db->join('xref_cupon_tipo', 'cupon.id = xref_cupon_tipo.idCupon');
@@ -137,7 +137,7 @@ Class cupon_db extends CI_MODEL
 	 * Obtiene los cupones por industria 
 	 */
     public function getCuponesPorIndustria($industria){
-    	$this->db->select('cupon.id, cupon.url, cupon.descripcion, cupon.likes, comercio.id, comercio.site, comercio.nombre, comercio.direccion, comercio.servicios');
+    	$this->db->select('cupon.id, cupon.url, cupon.descripcion, cupon.likes, comercio.id, comercio.site, comercio.nombre, comercio.direccion, comercio.servicios, comercio.facebook, comercio.twitter, comercio.tripadvisor, comercio.correo');
 		$this->db->from('cupon');
 		$this->db->join('comercio', 'cupon.idComercio = comercio.id');
 		$this->db->join('xref_comercio_industria', 'comercio.id = xref_comercio_industria.idComercio');
@@ -153,7 +153,7 @@ Class cupon_db extends CI_MODEL
 	 * Obtiene los cupones por texto 
 	 */
     public function getCuponesPorTexto($texts){
-    	$this->db->select('cupon.id, cupon.url, cupon.descripcion, cupon.likes, comercio.id, comercio.site, comercio.nombre, comercio.direccion, comercio.servicios');
+    	$this->db->select('cupon.id, cupon.url, cupon.descripcion, cupon.likes, comercio.id, comercio.site, comercio.nombre, comercio.direccion, comercio.servicios, comercio.facebook, comercio.twitter, comercio.tripadvisor, comercio.correo');
 		$this->db->from('cupon');
 		$this->db->join('comercio', 'cupon.idComercio = comercio.id');
 		// Build where statement

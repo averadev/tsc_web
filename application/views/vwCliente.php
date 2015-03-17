@@ -24,15 +24,15 @@
                 <div class="large-6 large-centered columns" >
                 
                     <div class="clearfix"> 
-                        <br><h2 class="left">Crea tu cuenta</h2> 
+                        <br><h2 class="left">Create a Account</h2> 
                         <a href="<?php echo base_url(); ?>"><img class="right" src="<?php echo base_url() . IMG; ?>app/logo-min.png"></a>
                     </div>
                 </div>
                 
                 <div id="tabCmp" class="large-6 large-centered columns">
                     <dl class="tabs" data-tab>
-                      <dd class="active"><a href="#panel1">Nuevo usuario</a></dd>
-                      <dd><a href="#panel2">Registrado</a></dd>
+                      <dd class="active"><a href="#panel1">New Account</a></dd>
+                      <dd><a href="#panel2">Sign up</a></dd>
                     </dl>
                     <div class="tabs-content">
                     <div class="content active" style="float: none;" id="panel1">
@@ -40,28 +40,48 @@
                             <div class="alert-box alert round" id="error"></div>
                             <form class="panel panel-primary radius"> 
                                 <div class="email-field"> 
-                                    <label>Correo Electronico <small>requerido</small> 
+                                    <label>Email <small>required</small> 
                                         <input type="email" id="correo"> </label> 
                                 </div>
                                 <div class="email-confirmation-field">
-                                    <label>Confirmar correo <small>requerido</small>
+                                    <label>Confirm Email <small>required</small>
                                         <input type="email" id="correoConf">
                                     </label>
                                 </div>
                                 <div class="password-field">
-                                    <label>Contraseña <small>requerido</small>
+                                    <label>Password <small>required</small>
                                         <input type="password" id="password">
                                     </label>
                                 </div>
                                 <div class="password-confirmation-field">
-                                    <label>Confirmar Contraseña <small>required</small>
+                                    <label>Confirm Password <small>required</small>
                                         <input type="password" id="passwordConf">
                                     </label>
                                 </div>
-                                <div style="text-align:center;">
-
+								
+								<div class="field">
+                                    <label>Name 
+                                        <input type="text" id="txtname">
+                                    </label>
                                 </div>
-                                <input type="button" class="large-12 button radius" value="Registrate" id="btnGuardar"> 
+								<div class="field">
+                                    <label>Country 
+                                        <input type="text" id="txtcountry">
+                                    </label>
+                                </div>
+								<div class="field">
+                                    <label>Stay Dates
+                                        <input type="text" id="txtstay" placeholder="(ejem: Febrary/10 - Febrary/20  )">
+                                    </label>
+                                </div>
+								
+								<div class="field terms">
+                                    <input id="chkTerms" type="checkbox">
+									<label for="chkTerms">I have read and agree to the <a href="#" data-reveal-id="myModal">Terms &amp; Conditions</a>.</label>
+                                </div>
+								
+                                <div style="text-align:center;"></div>
+                                <input type="button" class="large-12 button radius" value="Join Now" id="btnGuardar"> 
                             </form>
                         </div>
                           
@@ -72,18 +92,21 @@
                             <div class="alert-box alert round" id="error2"></div>
                             <form class="panel panel-primary radius"> 
                                 <div class="email-field"> 
-                                    <label>Correo Electronico <small>requerido</small> 
+                                    <label>Email <small>required</small> 
                                         <input type="email" id="correo2"> </label> 
                                 </div>
                                 <div class="password-field">
-                                    <label>Contraseña <small>requerido</small>
+                                    <label>Password <small>required</small>
                                         <input type="password" id="password2">
                                     </label>
                                 </div>
-                                <div style="text-align:center;">
-
+								<div class="field terms">
+                                    <input id="chkTerms2" type="checkbox">
+									<label for="chkTerms2">I have read and agree to the <a href="#" data-reveal-id="myModal">Terms &amp; Conditions</a>.</label>
                                 </div>
-                                <input type="button" class="large-12 button radius" value="Ingresa" id="btnGuardar2"> 
+								
+                                <div style="text-align:center;"></div>
+                                <input type="button" class="large-12 button radius" value="Sign up" id="btnGuardar2"> 
                             </form>
                         </div>
                           
@@ -96,7 +119,7 @@
                     <ul class="pricing-table"> 
                         <li class="title"><?= $nombre; ?></li> 
                         <li class="price">$<?= $costo; ?> MXN</li> 
-                        <li class="description">Cuponera <?= $nombre; ?></li> 
+                        <li class="description">Coupon Book <?= $nombre; ?></li> 
                         <li class="cta-button"><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
                         <input type="hidden" name="cmd" value="_xclick">
                         <input type="hidden" name="business" value="ventas@geekbucket.com.mx">
@@ -119,7 +142,25 @@
                 </div>
 
         </div>
-
+		
+		
+		<div id="myModal" class="reveal-modal" data-reveal>
+		  <p style="font-size: xx-large;">Terms &amp; Conditions.</p>
+		  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+			  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+			  ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, 
+			  fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
+			</p>
+			<p>
+			  Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. 
+				Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. 
+				Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. 
+				Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. 
+				Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing 
+				sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et 
+				ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.</p>
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>
 
         <input type="hidden" id="baseUrl" value="<?php echo base_url(); ?>" />
 
